@@ -40,22 +40,12 @@ const RetirementCal = () => {
       Understanding Retirement Calculator Output:
     </Text>
 
-    <Text style={styles.modalSubHeader}>Future Value of Contributions:</Text>
+    <Text style={styles.modalSubHeader}>Estimated Retirement Savings:</Text>
     <Text style={styles.modalText}>
       This value represents the estimated future value of your monthly contributions to your retirement savings. It accounts for the compounding effect of your monthly contributions with the specified rate of return over the years leading up to your retirement age.
     </Text>
 
-    <Text style={styles.modalSubHeader}>Future Value of Current Savings:</Text>
-    <Text style={styles.modalText}>
-      This value represents the estimated future value of your existing savings (initial investment) at the time of retirement. It takes into account the impact of inflation on the current savings.
-    </Text>
-
-    <Text style={styles.modalSubHeader}>Total Future Value:</Text>
-    <Text style={styles.modalText}>
-      This value is the sum of the future value of contributions and the future value of current savings. It represents the total estimated retirement savings at the time of retirement.
-    </Text>
-
-    <Text style={styles.modalSubHeader}>Required Savings at Retirement Age:</Text>
+    <Text style={styles.modalSubHeader}>Savings Needed:</Text>
     <Text style={styles.modalText}>
       This value represents the amount of savings needed at your planned retirement age to meet your financial goals. It takes into account the future value of contributions, the future value of current savings, and adjusts for inflation.
     </Text>
@@ -79,7 +69,6 @@ const RetirementCal = () => {
   };
 
   const calculateRetirementSavings = () => {
-    // Parse input values
     const age = parseInt(currentAge);
     const retiringAge = parseInt(retirementAge);
     const expectancyAge = parseInt(lifeExpectancy);
@@ -490,24 +479,24 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalHeaderText: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: 'white', // Adjust the color as needed
+    color: 'white',
   },
   modalSubHeader: {
     fontSize: 16,
     fontWeight: 'bold',
     marginTop: 10,
-    color: 'white', // Adjust the color as needed
+    color: 'white',
   },
   modalText: {
     fontSize: 14,
     marginBottom: 10,
-    color: 'white', // Adjust the color as needed
+    color: 'white',
   },
   convertCurrencyButton: {
     backgroundColor: 'blue',
@@ -521,9 +510,9 @@ const styles = StyleSheet.create({
     fontSize: 12
   },
   currencyContainer: {
-    flexDirection: 'row', // Align items horizontally
-    justifyContent: 'flex-start', // Align items at the start of the row
-    alignItems: 'center', // Align items vertically
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
     bottom: -20,
     left: -100
   },
