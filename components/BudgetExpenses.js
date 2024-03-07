@@ -1,24 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal, TextInput, Button, Alert, Image } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { useBudgetContext } from './../components/budgetContext';
 
 const BudgetExpenses = ({navigation}) => {
-  const [monthYear, setMonthYear] = useState('December 2023');
+  const [monthYear, setMonthYear] = useState('');
   const { budget, updateBudget } = useBudgetContext();
   const [newBudget, setNewBudget] = useState('');
   const [newBudgetAmount, setNewBudgetAmount] = useState(0);
   const [budgetHistory, setBudgetHistory] = useState([]);
   const [selectedExpenseType, setSelectedExpenseType] = useState('Food');
   const [expenseAmount, setExpenseAmount] = useState('');
-  const [expenses, setExpenses] = useState([]); 
+  const [expenses, setExpenses] = useState([]);
   const [isModalVisible, setModalVisible] = useState(false);
   const [modalType, setModalType] = useState('budget');
   const [currentDate, setCurrentDate] = useState('');
   const [points, setPoints] = useState(0);
+
   const addPoints = (amount) => {
     setPoints((prevPoints) => prevPoints + amount);
   };
+
+    const getCurrentMonthYear = () => {
+    const date = new Date();
+    const options = { year: 'numeric', month: 'long' };
+    const formattedDate = date.toLocaleDateString(undefined, options);
+    return formattedDate;
+  };
+
+
+  useEffect(() => {
+    setMonthYear(getCurrentMonthYear());
+  }, []);
 
   const getCurrentDate = () => {
     const date = new Date();
@@ -64,6 +77,7 @@ const BudgetExpenses = ({navigation}) => {
           amount: parseFloat(expenseAmount),
         };
         setExpenses(prevExpenses => [...prevExpenses, { ...newExpense, date: currentDate }]);
+
 
         // Deduct expense amount from the budget
         updateBudget((prevBudget) => {
