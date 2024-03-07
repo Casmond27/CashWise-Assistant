@@ -15,7 +15,7 @@ const ResultCalculator = ({ calculatedData, retirementSavings, requiredSavings, 
   const [selectedCurrency, setSelectedCurrency] = useState('SGD');
   const [conversionRate, setConversionRate] = useState(null);
   const [currencies, setCurrencies] = useState(['AUD','CAD','JPY','USD', 'CNY', 'SGD']);
-  //const [apiKey] = useState('e24967beb7369cdfa6cc3114e0e0d1b8');
+  const [apiKey] = useState('e24967beb7369cdfa6cc3114e0e0d1b8');
 
   useEffect(() => {
     fetchConversionRate();
@@ -35,11 +35,11 @@ const ResultCalculator = ({ calculatedData, retirementSavings, requiredSavings, 
         setConversionRate(rates);
       } else {
         console.error('API Error:', data.error.info);
-        // Handle API error, maybe display a message to the user
+
       }
     } catch (error) {
       console.error('Error fetching conversion rate:', error);
-      // Handle fetch error, maybe display a message to the user
+
     }
   };
 
